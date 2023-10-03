@@ -3,6 +3,7 @@ const cityInput = document.querySelector(".city-input");
 const searchButton = document.querySelector(".search-btn");
 const currentWeatherDiv = document.querySelector(".current-weather");
 const weatherCardsDiv = document.querySelector(".weather-cards");
+const historyList = document.getElementById('history-list');
 
 
 const API_KEY = "1d9d62ac9684ac5f4f6d51631cc28327";
@@ -38,7 +39,7 @@ const getWeatherDetails = (cityName, lat, lon) => {
 
       const uniqueForecastDays = [];
       const fiveDaysForecast = data.list.filter(forecast => {
-        const forecastDate = new Date(forecast.dt.txt).getDate();
+        const forecastDate = new Date(forecast.dt_txt).getDate();
         if(!uniqueForecastDays.includes(forecastDate)) {
           return uniqueForecastDays.push(forecastDate);
         }
@@ -83,42 +84,21 @@ searchButton.addEventListener("click", getCityCoordinates);
 
 
 
-// // Function to add a city to the search history
-// function addToHistory(city) {
-//     // Check if the city is already in the history
-//     if (!searchHistory.includes(city)) {
-//         searchHistory.push(city);
-//         // Create a list item for the search history
-//         const listItem = document.createElement('li');
-//         listItem.textContent = city;
-//         // Add click event to search with the city again when clicked
-//         listItem.addEventListener('click', () => {
-//             cityInput.value = city;
-//             searchWeather(city);
-//         });
-//         // Add the list item to the history list
-//         historyList.appendChild(listItem);
-//     }
-// }
+function addToHistory(cityName) {
+    if (!searchHistory.includes(cityName)) {
+        searchHistory.push(cityName);
+        const listItem = document.createElement('li');
+        listItem.textContent = cityName;
+         listItem.addEventListener('click', () => {
+             cityInput.value = cityName;
+            searchWeather(cityName);
+         });
+        historyList.appendChild(listItem);
+     }
+}
 
-// // Function to search for weather data when the form is submitted
-// function searchWeather(city) {
-//     getWeatherData(city);
-//     addToHistory(city);
-//     cityInput.value = ''; // Clear the input field
-// }
 
-// // Event listener for the form submission
-// searchForm.addEventListener('submit', (e) => {
-//     e.preventDefault();
-//     const city = cityInput.value.trim();
-//     if (city) {
-//         searchWeather(city);
-//     }
-// });
 
-// // Initialize the application with some default city, e.g., your current location
-// searchWeather('New York');
 
 
 

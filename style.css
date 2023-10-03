@@ -1,6 +1,6 @@
 /* Import Google font .open sans */
 
-@import url('https://fonts.googleapis.com/css2?family=open+sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -66,10 +66,11 @@ h1 {
     color: #fff;
     font-size: 1rem;
     border-radius: 4px;
-    background: #5372F0
+    background: #5372F0;
 }
 .weather-input .location-btn {
-    background: #6C757D
+    background: #5372F0;
+    width: 100px;
 }
 .weather-data {
     width: 100%;
